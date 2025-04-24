@@ -1,5 +1,4 @@
 import { createApp } from 'vue'
-import { computed } from 'vue'
 import App from './App.vue'
 import router from './router'
 import './assets/tailwind.css'
@@ -9,4 +8,4 @@ import 'flowbite'
 
 
 
-createApp(App).use(computed).use(router).use(i18n).mount('#app')
+createApp(App).use(router).use(i18n).mount('#app')
