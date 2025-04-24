@@ -2,7 +2,6 @@
   <div class="flex flex-col min-h-screen">
     <!-- 导航栏 -->
     <Navbar />
-
     <!-- 轮播图 -->
     <Carousel />
 

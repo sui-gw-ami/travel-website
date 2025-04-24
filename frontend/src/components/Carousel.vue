@@ -21,9 +21,13 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { Autoplay, Pagination } from 'swiper/modules'
 
+import dalian from '@/assets/image/dalian.jpg'
+import japan from '@/assets/image/riben.jpg'
+import hanguo from '@/assets/image/hanguo.jpg'
+
 const slides = [
-  { image: '/assets/images/logo.png', title: '长城 · 热门景点' },
-  { image: '/assets/images/logo.png', title: '上海 · 国际都市魅力' },
-  { image: '/assets/images/logo.png', title: '云南 · 民族风情之旅' }
+  { image: dalian, title: '大连· 热门景点' },
+  { image: japan, title: '日本 · 国际都市' },
+  { image: hanguo, title: '韩国 · 现代之旅' }
 ]
 </script>

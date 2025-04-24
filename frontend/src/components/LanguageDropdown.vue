@@ -2,9 +2,9 @@
     <div class="relative inline-block">
       <button
         @click="isOpen = !isOpen"
-        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100"
+        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-white focus:ring-4 focus:outline-none focus:ring-gray-100"
       >
-        <img :src="selectedLanguage.flag" alt="" class="w-5 h-5 mr-2" />
+        <img :src="selectedLanguage.flag" alt="" class="w-5 h-4 mr-2" />
         {{ selectedLanguage.label }}
         <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"
           viewBox="0 0 24 24">
@@ -50,7 +50,7 @@
     isOpen.value = false
   }
   
-  // 可选：点击外部关闭下拉框
+  // 点击外部关闭下拉框
   document.addEventListener('click', (e) => {
     const target = e.target
     if (!target.closest('.relative')) {

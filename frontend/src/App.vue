@@ -4,7 +4,8 @@ import Home from './views/Home.vue'
 
 <template>
   <div class="font-sans">
-  <Home />
+    <Navbar />
+  <router-view />
   </div>
 </template>
 
