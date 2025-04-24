@@ -3,9 +3,9 @@ import Home from './views/Home.vue'
 </script>
 
 <template>
-  <!-- <div class="w-full">、 -->
+  <div class="font-sans">
   <Home />
-  <!-- </div> -->
+  </div>
 </template>
 
 <style scoped>

@@ -3,76 +3,54 @@
     <div class="w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
       <!-- Logo -->
       <RouterLink to="/" class="flex items-left space-x-2">
-        <img :src="logo" alt="Logo" class="h-20" />
+        <img :src="currentLogo" alt="Logo" class="h-20" />
       </RouterLink>
 
       <!-- Desktop Menu -->
-      <nav class="hidden md:flex space-x-9 text-gray-700 font-medium text-lg items-center h-20">
-        <a href="#inbound" 
+      <nav class="hidden md:flex space-x-9 text-gray-700 font-medium text-lg items-end h-20">
+         <a href="#inbound" 
          @click.prevent="scrollTo('#inbound')" 
-         class="px-3 py-1 rounded hover:bg-blue-100 transition">入境旅游</a>
-        <a href="#outbound" @click.prevent="scrollTo('#outbound')">出境旅游</a>
-        <a href="#news" @click.prevent="scrollTo('#news')">旅游资讯</a>
-        <a href="#services" @click.prevent="scrollTo('#services')">服务介绍</a>
+         class="px-3 py-2 rounded hover:bg-yellow-100 transition">{{ $t('app.inbound') }}</a>
+        <a href="#outbound" 
+        @click.prevent="scrollTo('#outbound')" 
+        class="px-3 py-2 rounded hover:bg-yellow-60 transition">{{ $t('app.outbound') }}</a>
+        <a href="#news" 
+        @click.prevent="scrollTo('#news')" 
+        class="px-3 py-2 rounded hover:bg-yellow-80 transition">{{ $t('app.news') }}</a>
+        <a href="#services" 
+        @click.prevent="scrollTo('#services')" 
+        class="px-3 py-2 rounded hover:bg-yellow-100 transition">{{ $t('app.services') }}</a>
       </nav>
-
-      <!-- Right actions -->
-      <div class="hidden md:flex items-center space-x-3">
-        <select class="text-sm border border-gray-300 rounded px-2 py-1">
-          <option value="zh">中文</option>
-          <option value="en">English</option>
-          <option value="ja">日本語</option>
-          <option value="ko">한국어</option>
-        </select>
-        <button class="bg-blue-500 text-white text-sm px-4 py-1.5 rounded hover:bg-blue-600 transition">
-          登录
+        <div class="hidden md:flex items-end space-x-4 h-16">
+        <LanguageDropdown class="ml-4" />
+        <button class="w-24 bg-yellow-500 text-white text-md px-3 py-2 rounded hover:bg-yellow-600 transition">
+          {{ $t('app.login') }}
         </button>
+
       </div>
 
-      <!-- Mobile Button -->
-      <button @click="isOpen = !isOpen" class="md:hidden text-gray-600 focus:outline-none">
-        <svg v-if="!isOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-          viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-        <svg v-else xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-          viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
     </div>
-
-    <!-- Mobile Menu -->
-    <div v-if="isOpen" class="md:hidden px-4 pb-4 space-y-2 text-gray-900">
-      <a href="#inbound" class="hover:text-blue-600 transition">入境旅游</a>
-      <a href="#outbound" class="hover:text-blue-600 transition">出境旅游</a>
-      <a href="#news" class="hover:text-blue-600 transition">旅游资讯</a>
-      <a href="#services" class="hover:text-blue-600 transition">服务介绍</a>
-
-      <div class="flex items-center space-x-2 pt-2">
-        <select class="text-sm border border-gray-300 rounded px-2 py-1 flex-1">
-          <option value="zh">中文</option>
-          <option value="en">English</option>
-          <option value="ja">日本語</option>
-          <option value="ko">한국어</option>
-        </select>
-
-        <button class="bg-blue-500 text-white text-sm px-4 py-1.5 rounded hover:bg-blue-600 transition">
-          登录
-        </button>
-      </div>
-    </div>
+    <nav class="border-b-2 border-yellow-400"></nav>
   </header>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import logo from '@/assets/image/logo.png'
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import LanguageDropdown from './LanguageDropdown.vue'
 
 const isOpen = ref(false)
 
+const { locale } = useI18n()
+const logos = {
+  zh: '/image/logo/logo-cn.png',
+  en: '/image/logo/logo-en.png',
+  ja: '/image/logo/logo-cn.png',
+  ko: '/image/logo/logo-en.png'
+}
+// 动态绑定当前 logo
+const currentLogo = computed(() => logos[locale.value] || logos['zh'])
 const scrollTo = (id) => {
   const target = document.querySelector(id)
   if (target) {
