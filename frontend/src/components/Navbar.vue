@@ -20,9 +20,10 @@
       </nav>
         <div class="hidden md:flex items-end space-x-4 h-16">
         <LanguageDropdown class="ml-4" />
+        <!-- 登录暂时不需要
         <button class="w-24 bg-yellow-500 text-white text-md px-3 py-2 rounded hover:bg-yellow-600 transition">
           {{ $t('app.login') }}
-        </button>
+        </button> -->
       </div>
 
     </div>
@@ -41,9 +42,9 @@ const isOpen = ref(false)
 const { locale } = useI18n()
 const logos = {
   zh: '/image/logo/logo-cn.png',
-  en: '/image/logo/logo-en.png',
   ja: '/image/logo/logo-cn.png',
-  ko: '/image/logo/logo-en.png'
+  ru: '/image/logo/logo-en.png',
+// en: '/image/logo/logo-en.png',
 }
 // 动态绑定当前 logo
 const currentLogo = computed(() => logos[locale.value] || logos['zh'])

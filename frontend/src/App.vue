@@ -1,11 +1,15 @@
 <script setup>
-import Home from './views/Home.vue'
+import Navbar from '@/components/Navbar.vue'
+  import Footer from '@/components/Footer.vue'
 </script>
 
 <template>
   <div class="font-sans">
     <Navbar />
-  <router-view />
+    <main class="flex-grow">
+      <RouterView />
+    </main>
+    <Footer />
   </div>
 </template>
 

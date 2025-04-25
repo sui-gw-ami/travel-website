@@ -1,7 +1,5 @@
 <template>
     <div class="flex flex-col min-h-screen">
-      <!-- 导航栏 -->
-      <Navbar />
 
       <!-- 主内容区 -->
       <main class="max-w-screen-xl w-full mx-auto px-4 sm:px-6 py-10 space-y-16">
@@ -37,15 +35,10 @@
           </ul>
         </section>
       </main>
-  
-      <!-- 页脚 -->
-      <Footer />
     </div>
   </template>
   
   <script setup>
-  import Navbar from '@/components/Navbar.vue'
-  import Footer from '@/components/Footer.vue'
   </script>
   
   <style>

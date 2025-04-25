@@ -1,7 +1,5 @@
 <template>
   <div class="flex flex-col min-h-screen">
-    <!-- 导航栏 -->
-    <Navbar />
     <!-- 轮播图 -->
     <Carousel />
 
@@ -39,16 +37,11 @@
         </ul>
       </section>
     </main>
-
-    <!-- 页脚 -->
-    <Footer />
   </div>
 </template>
 
 <script setup>
-import Navbar from '@/components/Navbar.vue'
 import Carousel from '@/components/Carousel.vue'
-import Footer from '@/components/Footer.vue'
 </script>
 
 <style>

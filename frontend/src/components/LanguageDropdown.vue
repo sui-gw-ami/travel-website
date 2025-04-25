@@ -36,10 +36,10 @@
   const isOpen = ref(false)
   
   const languages = [
-    { code: 'zh', label: '中文(简体)', flag: 'https://flagcdn.com/w40/cn.png' },
-    { code: 'en', label: 'English', flag: 'https://flagcdn.com/w40/us.png' },
-    { code: 'ja', label: '日本語', flag: 'https://flagcdn.com/w40/jp.png' },
-    { code: 'ko', label: '한국어', flag: 'https://flagcdn.com/w40/kr.png' },
+    { code: 'cn', label: '中文(简体)', flag: 'https://flagcdn.com/w40/cn.png' },
+    // { code: 'en', label: 'English', flag: 'https://flagcdn.com/w40/us.png' },
+    { code: 'jp', label: '日本語', flag: 'https://flagcdn.com/w40/jp.png' },
+    { code: 'ru', label: '한국어', flag: 'https://flagcdn.com/w40/ru.png' },
   ]
   
   const selectedLanguage = ref(languages.find(l => l.code === locale.value))
