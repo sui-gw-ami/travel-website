@@ -20,7 +20,7 @@
       <!-- 联系方式 -->
       <div>
         <h3 class="text-lg font-semibold mb-3">{{ $t('footer.contact') }}</h3>
-        <p class="text-sm">📧 info@example.com</p>
+        <p class="text-sm"> info@example.com</p>
         <p class="text-sm">📞 +86 123 456 7890</p>
         <p class="text-sm">📍 {{ $t('footer.address') }}</p>
       </div>

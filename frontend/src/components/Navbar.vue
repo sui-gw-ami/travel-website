@@ -41,9 +41,9 @@ const isOpen = ref(false)
 
 const { locale } = useI18n()
 const logos = {
-  zh: '/image/logo/logo-cn.png',
-  ja: '/image/logo/logo-cn.png',
-  ru: '/image/logo/logo-en.png',
+  cn: '/image/logo/logo-cn.png',
+  jp: '/image/logo/logo-jp.png',
+  ru: '/image/logo/logo-ru.png',
 // en: '/image/logo/logo-en.png',
 }
 // 动态绑定当前 logo
@@ -55,7 +55,7 @@ const navItems = [
   { label: 'app.inbound', to: '/inbound', type: 'link' },
   { label: 'app.outbound', to: '/outbound', type: 'link' },
   { label: 'app.news', to: '/news', type: 'link' },
-  { label: 'app.services', to: '/services', type: 'link' },
+  // { label: 'app.services', to: '/services', type: 'link' },
   { label: 'app.contact', to: '/contact', type: 'link' }
 ]
 
