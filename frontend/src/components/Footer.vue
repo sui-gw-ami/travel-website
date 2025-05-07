@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-gray-100 text-gray-600 py-10 mt-8">
+ <footer class="bg-gray-100 text-gray-600 py-10 mt-8">
     <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- 关于我们 -->
       <div>
@@ -25,9 +25,12 @@
         <p class="text-sm">📍 {{ $t('footer.address') }}</p>
       </div>
     </div>
-
     <div class="mt-6 text-center text-md text-gray-600">
       {{ $t('footer.aboutDesc') }}
     </div>
   </footer>
 </template>
+
+<script setup>
+const year = new Date().getFullYear()
+</script>

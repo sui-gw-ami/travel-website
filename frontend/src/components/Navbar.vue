@@ -8,7 +8,8 @@
 
       <!-- Desktop Menu -->
       <nav  class="hidden md:flex space-x-9 text-gray-700 font-medium text-lg items-end h-20">
-        <RouterLink
+        <RouterLink 
+        @click.prevent="scrollToTop"
         v-for="item in navItems" :key="item.label" :to="item.to"
           :class="[
             'px-3 py-2 rounded font-medium transition hover:text-yellow-500',
@@ -59,8 +60,7 @@ const navItems = [
   { label: 'app.contact', to: '/contact', type: 'link' }
 ]
 
-const navigateAndClose = (id) => {
-  scrollTo(id)
-  isOpen.value = false
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 </script>
