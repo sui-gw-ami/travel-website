@@ -1,0 +1,33 @@
+{
+    "countries": [
+      {
+        "name": "日本",
+        "tours": [
+          {
+            "id": "jp-1",
+            "title": "东京大阪6日游",
+            "summary": "感受日本文化与美食。",
+            "days": [
+              { "title": "第1天", "description": "抵达东京，市区观光..." },
+              { "title": "第2天", "description": "浅草寺、秋叶原..." }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "韩国",
+        "tours": [
+          {
+            "id": "kr-1",
+            "title": "首尔济州5日游",
+            "summary": "体验韩流与自然风光。",
+            "days": [
+              { "title": "第1天", "description": "首尔市区游览..." },
+              { "title": "第2天", "description": "飞往济州岛..." }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

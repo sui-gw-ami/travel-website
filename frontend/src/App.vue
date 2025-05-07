@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar.vue'
 </script>
 
 <template>
-  <div class="font-sans">
+  <div class="min-h-screen flex flex-col font-sans">
     <Navbar />
     <main class="flex-grow">
       <RouterView />
@@ -12,6 +12,7 @@ import Navbar from '@/components/Navbar.vue'
     <Footer />
   </div>
 </template>
+
 
 <style scoped>
 .logo {

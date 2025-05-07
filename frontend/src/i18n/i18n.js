@@ -5,7 +5,7 @@ const messages = {
     app: {
       inbound: '入境旅游',
       outbound: '出境旅游',
-      services: '服务介绍',
+      // services: '服务介绍',
       news: '旅游资讯',
       contact: '联系我们',
       // login: ' 登 录 ',
@@ -29,7 +29,7 @@ const messages = {
     app: {
       inbound: 'インバウンド観光',
       outbound: 'アウトバウンド観光',
-      services: 'サービス紹介',
+      // services: 'サービス紹介',
       news: '旅行ニュース',
       contact: '問い合わせ',
       // login: 'ログイン',
@@ -52,7 +52,7 @@ const messages = {
     app: {
       inbound: 'Въездной туризм',
       outbound: 'Выездной туризм',
-      services: 'Описание услуг',
+      // services: 'Описание услуг',
       news: 'Новости туризма',
       contact: 'Связаться с нами',
       // login: 'Войти',
@@ -87,7 +87,7 @@ const messages = {
 const i18n = createI18n({
   legacy: false,
   locale: 'cn',
-  fallbackLocale: 'ja',
+  fallbackLocale: 'jp',
   messages,
 })
 
