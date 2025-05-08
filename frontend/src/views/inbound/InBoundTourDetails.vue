@@ -37,7 +37,7 @@
 
 
 <script setup>
-import { ref, defineProps } from 'vue'
+import { ref, defineProps, watch } from 'vue'
 
 const props = defineProps({
   items: {
@@ -51,6 +51,14 @@ const props = defineProps({
 })
 
 const expanded = ref(props.items.map(() => props.defaultExpanded))
+
+watch(
+  () => props.items,
+  (newItems) => {
+    expanded.value = newItems.map(() => props.defaultExpanded)
+  },
+  { immediate: true } // 首次加载时也执行
+)
 
 // 切换展开/折叠状态
 function toggle(index) {

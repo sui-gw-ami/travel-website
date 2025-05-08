@@ -13,7 +13,7 @@
         v-for="item in navItems" :key="item.label" :to="item.to"
           :class="[
             'px-3 py-2 rounded font-medium transition hover:text-yellow-500',
-            $route.path === item.to ? 'text-yellow-500 font-bold' : ''
+            $route.path.startsWith(item.to) ? 'text-yellow-500 font-bold' : ''
           ]"
         >
           {{ $t(item.label) }}

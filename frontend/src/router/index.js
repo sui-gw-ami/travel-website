@@ -15,5 +15,7 @@ export default createRouter({
     { path: '/news', name: 'News', component: News },
     { path: '/services', name: 'Services', component: Services },
     { path: '/contact', name: 'Contact', component: Contact },
+    { path: '/inbound/:id', name: 'InboundTourDetail', component: Inbound, props: true},
+    { path: '/outbound/:id', name: 'OutboundTourDetail', component: Outbound, props: true},
   ]
 })
