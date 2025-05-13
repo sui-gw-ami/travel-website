@@ -32,12 +32,12 @@
             <h2 class="text-2xl font-bold mb-2 text-[#6B4F1D]">{{ selectedTour.title }}</h2>
             <p class="text-gray-700 mb-4">{{ selectedTour.summary }}</p>
             <!-- 预定按钮 -->
-            <button
-              class="absolute right-6 bottom-4 bg-yellow-500 text-white py-1 px-4 rounded-lg hover:bg-yellow-600 transition"
-              @click="applyNow"
+            <RouterLink
+              :to="`/booking/${selectedTour.id}`"
+              class="absolute right-6 bottom-4 bg-yellow-500 text-white py-1 px-4 rounded-lg hover:bg-yellow-600 transition text-center"
             >
-              立即预约
-            </button>
+              {{ $t('app.applyNow') }}
+            </RouterLink>
           </div>
           <div class="px-6 py-4 space-y-4 flex-1">
             <TourDetails :items="selectedTour.days" :defaultExpanded="true" />

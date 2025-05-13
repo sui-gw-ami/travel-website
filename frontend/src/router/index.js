@@ -5,6 +5,7 @@ import Outbound from '@/views/Outbound.vue'
 import News from '@/views/News.vue'
 import Services from '@/views/Services.vue'
 import Contact from '@/views/Contact.vue'
+import Booking from '@/views/Booking.vue'
 
 export default createRouter({
   history: createWebHistory(),
@@ -17,5 +18,6 @@ export default createRouter({
     { path: '/contact', name: 'Contact', component: Contact },
     { path: '/inbound/:id', name: 'InboundTourDetail', component: Inbound, props: true},
     { path: '/outbound/:id', name: 'OutboundTourDetail', component: Outbound, props: true},
+    { path: '/booking/:id', name: 'Booking', component: Booking, props: true},
   ]
 })
