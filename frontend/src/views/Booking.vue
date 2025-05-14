@@ -12,48 +12,20 @@
   
       <form @submit.prevent="handleSubmit" class="space-y-4">
   
-    <!-- 中文用户 -->
-    <div v-if="isDomestic">
-      <label class="block mb-1 text-sm font-medium text-gray-700">{{ $t('booking.name') }} *</label>
-      <input v-model="form.name" type="text"
-        :class="inputClass(errors.name)"
-        placeholder="张三" />
-      <p v-if="errors.name" class="text-red-500 text-sm mt-1">{{ errors.name }}</p>
-
-      <label class="block mb-1 mt-4 text-sm font-medium text-gray-700">{{ $t('booking.phone') }} *</label>
-      <input v-model="form.phone" type="text"
-        :class="inputClass(errors.phone)"
-        placeholder="13812345678" />
-      <p v-if="errors.phone" class="text-red-500 text-sm mt-1">{{ errors.phone }}</p>
-
-      <label class="block mb-1 mt-4 text-sm font-medium text-gray-700">{{ $t('booking.wechat') }}</label>
-      <input v-model="form.wechat" type="text" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring-yellow-300" />
-    </div>
-
-    <!-- 外国用户 -->
-    <div v-else>
-      <label class="block mb-1 text-sm font-medium text-gray-700">{{ $t('booking.firstName') }} *</label>
-      <input v-model="form.firstName" type="text"
-        :class="inputClass(errors.firstName)" />
-      <p v-if="errors.firstName" class="text-red-500 text-sm mt-1">{{ errors.firstName }}</p>
-
-      <label class="block mb-1 mt-4 text-sm font-medium text-gray-700">{{ $t('booking.lastName') }} *</label>
-      <input v-model="form.lastName" type="text"
-        :class="inputClass(errors.lastName)" />
-      <p v-if="errors.lastName" class="text-red-500 text-sm mt-1">{{ errors.lastName }}</p>
-
-      <label class="block mb-1 mt-4 text-sm font-medium text-gray-700">{{ $t('booking.email') }} *</label>
-      <input v-model="form.email" type="email"
-        :class="inputClass(errors.email)"
-        placeholder="example@mail.com" />
-      <p v-if="errors.email" class="text-red-500 text-sm mt-1">{{ errors.email }}</p>
-    </div>
-  
-            <!-- 性别 -->
+        <!-- 中文用户(姓名) -->
         <div>
-            <label class="block mb-1 text-sm font-medium text-gray-700">{{ $t('booking.gender') }} *</label>
-            <select v-model="form.gender" :class="inputClass(errors.gender)">
-                <option value="">{{ $t('booking.selectGender') }}</option>
+          <label class="block mb-1 text-sm font-medium text-gray-700">{{ $t('booking.name') }} <span class="text-red-500 font-semibold">*</span></label>
+          <input v-model="form.name" required type="text"
+            :class="inputClass(errors.name)"
+          />
+          <p v-if="errors.name" class="text-red-500 text-sm mt-1">{{ errors.name }}</p>
+        </div>
+      
+        <!-- 性别 -->
+        <div>
+            <label class="block mb-1 text-sm font-medium text-gray-700">{{ $t('booking.gender') }} <span class="text-red-500 font-semibold">*</span></label>
+            <select v-model="form.gender" required :class="inputClass(errors.gender)">
+                <option value=""></option>
                 <option value="male">{{ $t('booking.male') }}</option>
                 <option value="female">{{ $t('booking.female') }}</option>
             </select>
@@ -62,45 +34,46 @@
 
         <!-- 人数 -->
         <div>
-            <label class="block mb-1 mt-4 text-sm font-medium text-gray-700">{{ $t('booking.personCount') }} *</label>
-            <input v-model.number="form.personCount" type="number" min="1"
+            <label class="block mb-1 mt-4 text-sm font-medium text-gray-700">{{ $t('booking.personCount') }} <span class="text-red-500 font-semibold">*</span></label>
+            <input v-model="form.personCount" required type="number" min="1"
                 :class="inputClass(errors.personCount)" />
             <p v-if="errors.personCount" class="text-red-500 text-sm mt-1">{{ errors.personCount}}</p>
         </div>
-        <!-- 电话 -->
-        <div>
-          <label class="block mb-1 text-gray-700">{{ $t('booking.phone') }} <span v-if="isChinese">*</span></label>
+
+        <!-- 中文用户(电话，微信，邮箱) -->
+        <div v-if="isChinese">
+          <label class="block mb-1 mt-4 text-sm font-medium text-gray-700">{{ $t('booking.phone') }} <span class="text-red-500 font-semibold">*</span></label>
+          <input v-model="form.phone" required type="text"
+            :class="inputClass(errors.phone)"
+          />
+          <p v-if="errors.phone" class="text-red-500 text-sm mt-1">{{ errors.phone }}</p>
+
+          <label class="block mb-1 mt-4 text-sm font-medium text-gray-700">{{ $t('booking.wechat') }}</label>
+          <input v-model="form.wechat" type="text" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring-yellow-300" />
+
+          <label class="block mb-1 text-gray-700">{{ $t('booking.email') }}</label>
           <input
-            v-model="form.phone"
-            :required="isChinese"
-            type="text"
+            v-model="form.email" type="email"
             class="w-full border px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-yellow-300"
           />
         </div>
-  
-        <!-- 邮箱 -->
-        <div>
-          <label class="block mb-1 text-gray-700">{{ $t('booking.email') }} <span v-if="!isChinese">*</span></label>
+      
+        <!-- 国外用户（邮箱） -->
+        <div v-else>
+          <label class="block mb-1 text-gray-700">{{ $t('booking.email') }} <span class="text-red-500 font-semibold">*</span></label>
           <input
-            v-model="form.email"
-            :required="!isChinese"
-            type="email"
+            v-model="form.email" type="email"
             class="w-full border px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-yellow-300"
           />
+          <p v-if="errors.email" class="text-red-500 text-sm mt-1">{{ errors.email }}</p>
         </div>
-  
-        <!-- 微信 -->
-        <div>
-          <label class="block mb-1 text-gray-700">{{ $t('booking.wechat') }}</label>
-          <input v-model="form.wechat" type="text" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-yellow-300" />
-        </div>
-  
+
         <!-- 备注 -->
         <div>
           <label class="block mb-1 text-gray-700">{{ $t('booking.note') }}</label>
           <textarea v-model="form.note" rows="3" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-yellow-300"></textarea>
         </div>
-  
+
         <div class="flex justify-end">
           <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded transition">
             {{ $t('app.applyNow') }}
@@ -110,7 +83,7 @@
   
       <!-- 弹窗提示 -->
       <div v-if="showSuccess" class="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
-        <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+        <div class="bg-white p-6 rounded-xl shadow-lg text-left">
           <p class="text-yellow-700 text-lg font-semibold">{{ $t('booking.success') }}</p>
           <button @click="goBack" class="mt-4 px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded">
             {{ $t('booking.back') }}
@@ -137,49 +110,69 @@
   
   const isChinese = computed(() => locale.value === 'cn')
   
-  const form = ref({
+  const form = reactive({
     name: '',
     firstName: '',
     lastName: '',
-    email: '',
+    gender: '',
+    personCount: 1,
     phone: '',
     wechat: '',
-    note: '',
-    gender: '',
-    participants: 1
+    email: '',
+    note: ''
 })
-  
-    function inputClass(error) {
+
+  function inputClass(error) {
     return [
-        'w-full border px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-yellow-300',
-        error ? 'border-red-500' : ''
+      'w-full border px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-yellow-300',
+      error ? 'border-red-500' : ''
     ]
-    }
+  }
   function handleSubmit() {
-    Object.keys(errors).forEach(k => delete errors[k])
+  // 清空错误提示（用赋值方式，不用 delete）
+  for (const key in errors) {
+    errors[key] = ''
+  }
 
-    if (isDomestic.value) {
-        if (!form.name.trim()) errors.name = t('booking.errors.nameRequired')
-        if (!/^1[3-9]\d{9}$/.test(form.phone)) errors.phone = t('booking.errors.phoneInvalid')
-    } else {
-        if (!form.firstName.trim()) errors.firstName = t('booking.errors.firstNameRequired')
-        if (!form.lastName.trim()) errors.lastName = t('booking.errors.lastNameRequired')
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errors.email = t('booking.errors.emailInvalid')
+  // 中文用户校验
+  if (!form.name.trim()) {
+    errors.name = t('booking.errors.nameRequired')
+  }
+
+  if (!form.gender) {
+    errors.gender = t('booking.errors.genderRequired')
+  }
+
+  if (!form.personCount || form.personCount < 1) {
+    errors.personCount = t('booking.errors.participantsInvalid')
+  }
+
+  if (isChinese.value) {
+    if (!form.phone.trim()) {
+      errors.phone = t('booking.errors.phoneRequired')
+    } else if (!/^1[3-9]\d{9}$/.test(form.phone)) {
+      errors.phone = t('booking.errors.phoneInvalid')
     }
-
-    if (!form.gender) errors.gender = t('booking.errors.genderRequired')
-    if (!Number.isInteger(form.participants) || form.personCount< 1) {
-        errors.personCount= t('booking.errors.participantsInvalid')
-    }
-
-    if (Object.keys(errors).length === 0) {
-        showSuccess.value = true
+  } else {
+    if (!form.email.trim()) {
+      errors.email = t('booking.errors.emailRequired')
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      errors.email = t('booking.errors.emailInvalid')
     }
   }
+
+  // 提交判断
+  const hasError = Object.values(errors).some(val => val)
+  if (!hasError) {
+    showSuccess.value = true
+  }
+}
+
   
   function goBack() {
-    showSuccess.value = false
-    router.back()
-  }
+      showSuccess.value = false
+      Object.keys(form).forEach(k => form[k] = '') // 清空表单
+      router.back()
+    }
   </script>
   
