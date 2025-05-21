@@ -15,13 +15,13 @@ const messages = {
     booking: {
       title: '预约信息',
       selectedTour: '所选行程',
-      name: '姓名',
-      gender: '性别',
-      personCount: '出行人数',
-      email: '邮箱',
-      phone: '联系电话',
-      wechat: '微信',
-      note: '备注',
+      name: '姓名：',
+      gender: '性别：',
+      personCount: '出行人数：',
+      email: '邮箱：',
+      phone: '联系电话：',
+      wechat: '微信：',
+      note: '备注：',
       male: '男',
       female: '女',
       submit: '提交',
@@ -29,12 +29,18 @@ const messages = {
       errors: {
         nameRequired: '请输入姓名',
         genderRequired: '请选择性别',
-        personCountRequired: '请输入出游人数',
+        personCountRequired: '请输入出行人数',
+        personCountInvalid: '请输正确的人数',
         phoneRequired: '请输入电话号码',
         phoneInvalid: '请输入有效的电话号码',
         emailInvalid: '请输入有效的邮箱地址',
-        personCountInvalid: '请输正确的人数（至少1人）',
       },
+      submit: {
+        submitting: "提交中...",
+        submissionError: "提交失败",
+        OK: "OK",
+        submissionFailed: "提交失败，请重新提交",
+      }
     },
     contact: {
       title: '联系我们',
@@ -48,6 +54,10 @@ const messages = {
       aboutDesc: '我们致力于向全球游客展示中国的自然风光与文化魅力。',
       companyName: '小猪陪你 全球旅行',
       rights: '保留所有权利。',
+    },
+    form: {
+      required: "(必填)",
+      optional: "(选填)"
     },
   },
   jp: {
@@ -64,13 +74,13 @@ const messages = {
     booking: {
       title: '予約情報',
       selectedTour: 'ツアー',
-      name: 'お名前',
-      gender: '性別',
-      personCount: '参加人数',
-      email: 'メールアドレス',
-      phone: '電話番号',
-      wechat: 'WeChat',
-      note: '備考',
+      name: 'お名前：',
+      gender: '性別：',
+      personCount: '参加人数：',
+      email: 'メールアドレス：',
+      phone: '電話番号：',
+      wechat: 'WeChat：',
+      note: '備考：',
       male: '男性',
       female: '女性',
       submit: '送信',
@@ -98,6 +108,10 @@ const messages = {
       companyName: 'ピッギーと共に世界旅行へ',
       rights: '全著作権所有。',
     },
+    form: {
+      required: "(必須)",
+      optional: "(任意)"
+    },
   },
   ru: {
     app: {
@@ -113,13 +127,13 @@ const messages = {
     booking: {
       title: 'Информация для бронирования',
       selectedTour: 'Выбранный тур',
-      name: 'Имя',
-      gender: 'Пол',
-      personCount: 'Количество человек',
-      email: 'Электронная почта',
-      phone: 'Телефон',
-      wechat: 'WeChat',
-      note: 'Примечание',
+      name: 'Имя：',
+      gender: 'Пол：',
+      personCount: 'Количество человек：',
+      email: 'Электронная почта：',
+      phone: 'Телефон：',
+      wechat: 'WeChat：',
+      note: 'Примечание：',
       male: 'Мужской',
       female: 'Женский',
       submit: 'Отправить',
@@ -145,6 +159,10 @@ const messages = {
       aboutDesc: 'Мы стремимся показать туристам со всего мира природную красоту и культурное богатство Китая.',
       companyName: 'Путешествия с Поросёнком по миру',
       rights: 'Все права защищены.',
+    },
+    form: {
+      required: "(обязательно)",
+      optional: "(необязательно)"
     },
   },
   // en: {
