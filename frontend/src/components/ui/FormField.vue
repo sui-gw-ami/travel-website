@@ -1,6 +1,6 @@
 <template>
     <div class="mb-4">
-      <!-- 标签行 - 适配RTL语言 -->
+      <!-- 标签行 -->
       <div class="flex items-center justify-between mb-1">
         <label class="text-sm font-medium flex items-center gap-1" :class="labelClass">
           <span v-if="icon" class="text-yellow-600">

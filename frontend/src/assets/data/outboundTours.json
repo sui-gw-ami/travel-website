@@ -1,7 +1,7 @@
 {
     "outboundTours": [
       {
-        "name": "日本",
+        "country": "日本",
         "tours": [
           {
             "id": "jp-1",
@@ -15,7 +15,7 @@
         ]
       },
       {
-        "name": "韩国",
+        "country": "韩国",
         "tours": [
           {
             "id": "kr-1",

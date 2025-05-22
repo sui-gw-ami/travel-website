@@ -7,7 +7,7 @@
             <svg class="w-8 h-8 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
             </svg>
-            <h3 class="text-lg font-semibold text-gray-800">{{ title }}</h3>
+            <h3 class="text-lg font-semibold text-gray-800">{{ $t('booking.success.title') }}</h3>
           </div>
           
           <!-- 内容 -->
@@ -22,10 +22,16 @@
               @click="$emit('close')"
               class="px-6 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg transition"
             >
-              {{ buttonText }}
+              {{ $t('booking.submit.OK')  }}
             </button>
           </div>
         </div>
       </div>
     </Transition>
   </template>
+
+<script setup>
+defineProps({
+  message: String, 
+})
+</script>

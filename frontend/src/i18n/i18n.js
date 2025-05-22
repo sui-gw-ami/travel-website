@@ -10,6 +10,7 @@ const messages = {
       contact: '联系我们',
       // login: ' 登 录 ',
       welcome: '欢迎来自全球的游客探索中国的美丽风光与文化遗产！',
+      featuredTours: '精选行程',
       applyNow: '立即预约',
     },
     booking: {
@@ -40,6 +41,12 @@ const messages = {
         submissionError: "提交失败",
         OK: "OK",
         submissionFailed: "提交失败，请重新提交",
+      },
+      success: {
+        title: "预订成功",
+        message: "感谢您的预订，",
+        referenceId: "您的预订编号",
+        emailSent: "我们已发送邮件通知工作人员处理。"
       }
     },
     contact: {

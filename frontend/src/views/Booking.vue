@@ -109,7 +109,7 @@
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
           </svg>
-          {{ $t('app.submitting') }}
+          {{ $t('booking.submit.submitting') }}
         </span>
       </button>
       <ErrorModal 
@@ -117,6 +117,19 @@
         :message="submitError"
         @close="showSubmitError = false"
       />
+      <!-- 成功弹窗 -->
+      <SuccessModal 
+        v-if="showSuccess"
+        :message="successMessage"
+        @close="goBack"
+      >
+        <!-- 额外提示插槽 -->
+        <template #extra>
+          <p class="text-sm text-gray-600 mt-2">
+            {{ $t('booking.success.emailSent') }}
+          </p>
+        </template>
+      </SuccessModal>
     </form>
   </div>  
 </template>
@@ -135,9 +148,6 @@ const route = useRoute()
 const router = useRouter()
 const { locale, t } = useI18n()
 
-// 数据获取
-const tourId = route.params.id
-const tourInfo = data.dalianTours.find(t => t.id === tourId)
 
 const form = reactive({
   name: '',
@@ -148,17 +158,24 @@ const form = reactive({
   email: '',
   note: ''
 })
+// 迁移元数据获取
+const tourId = route.params.id
+const tourInfo = data.dalianTours.find(t => t.id === tourId)
 
 const errors = reactive({})
 const showSuccess = ref(false)
+const successMessage = ref('')
 const isChinese = computed(() => locale.value === 'cn')
 
+//输入框动作
 function inputClass(error) {
     return [
       'w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition',
       error ? 'border-red-500' : ''
     ]
   }
+
+  //输入框输入错误判断
   function validateField(fieldName, value) {
   switch(fieldName) {
     case 'name':
@@ -191,6 +208,7 @@ function inputClass(error) {
   }
 }
 
+//提交时判断
 const isSubmitting = ref(false)
 const showSubmitError = ref(false)
 const submitError = ref('')
@@ -201,44 +219,66 @@ async function handleSubmit() {
   
   // 如果存在验证错误，阻止提交
   if (Object.values(errors).some(Boolean)) {
-    return // 错误已经显示在对应字段下方
+    return
   }
 
   isSubmitting.value = true
 
   try {
-    // 模拟API调用（替换为实际请求）
-    const response = await fetch('/api/bookings', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form)
-    })
+
+    // 1. 提交到数据库
+    await submitBookingToDB(form)
     
-    if (!response.ok) throw new Error(await response.text())
+    // 2. 发送邮件通知
+    await sendEmailNotification(form)
     
     // 提交成功
     showSuccess.value = true
+    successMessage.value = generateSuccessMessage(form)
   } catch (error) {
-    console.error('提交失败:', error)
     submitError.value = error.message || t('booking.submit.submissionFailed')
     showSubmitError.value = true
   } finally {
     isSubmitting.value = false
   }
+}
 
-  // 模拟API提交函数
-  // async function submitFormData(formData) {
-  //   return new Promise((resolve, reject) => {
-  //     setTimeout(() => {
-  //       // 模拟90%成功率
-  //       if (Math.random() > 0.1) {
-  //         resolve()
-  //       } else {
-  //         reject(new Error(t('app.networkError')))
-  //       }
-  //     }, 1500) // 模拟网络延迟
-  //   })
-  // }
+// 模拟保存表单到DB
+async function submitBookingToDB(formData) {
+    // 模拟DB登录API调用（替换为实际请求）
+    const response = await fetch('/api/bookings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form)
+    })
+  
+    // if (!response.ok) throw new Error(await response.text())
+}
+// 生成成功消息
+function generateSuccessMessage(formData) {
+   return `${t('booking.success.message')} ${formData.name || ''}。${t('booking.success.referenceId')}：${generateBookingId()}`
+}
+
+// 模拟邮件发送
+async function sendEmailNotification(formData) {
+  const mailContent = {
+    to: 'staff@yourcompany.com',
+    subject: `新预订通知 - ${formData.tourInfo?.title || ''}`,
+    html: `
+      <h2>新的行程预订</h2>
+      <p><strong>客户姓名：</strong> ${formData.name}</p>
+      <p><strong>行程：</strong> ${formData.tourInfo?.title || ''}</p>
+      <p><strong>人数：</strong> ${formData.personCount}</p>
+      <p><strong>联系方式：</strong> ${formData.phone || formData.email}</p>
+    `
+  }
+  
+  // 实际项目中替换为真实的邮件API调用
+  await fetch('/api/send-email', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(mailContent)
+  })
 }
 
 function goBack() {
