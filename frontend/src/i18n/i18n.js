@@ -66,6 +66,14 @@ const messages = {
       required: "(必填)",
       optional: "(选填)"
     },
+    tour: {
+      day: "第{day}天",
+      time: "时间",
+      transport: "交通",
+      meals: "用餐",
+      hotel: "住宿",
+      description: "详细介绍"
+    }
   },
   jp: {
     app: {
