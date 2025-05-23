@@ -25,11 +25,12 @@
               >
                 <div class="flex items-center">
                   <span class="truncate">{{ tour.title }}</span>
+                  <!-- 热门标签 -->
                   <span 
                     v-if="tour.hot" 
-                    class="ml-auto bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full"
+                    class="ml-2 bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full"
                   >
-                    {{ $t('inbound.hotBadge') }}
+                  Hot
                   </span>
                   <!-- 箭头 -->
                   <svg

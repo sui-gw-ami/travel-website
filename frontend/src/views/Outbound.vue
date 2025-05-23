@@ -38,10 +38,7 @@
                         v-if="tour.hot" 
                         class="ml-2 bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full"
                       >
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M12.83 2.06a.75.75 0 0 0-1.14.24 12.3 12.3 0 0 1-.99 1.57 18.1 18.1 0 0 1-2.49 2.7A10.38 10.38 0 0 0 5.25 10.5a5.25 5.25 0 0 0 10.5 0c0-2.3-.97-4.5-2.47-6.65a.75.75 0 0 0-.45-.29Z"/>
-                        </svg>
-                        <!-- {{ $t(tour.hot) }} -->
+                      Hot
                       </span>
 
                       <!-- 箭头 -->
