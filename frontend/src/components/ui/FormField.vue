@@ -46,11 +46,6 @@
         </svg>
         {{ error }}
       </p>
-  
-      <!-- 帮助文本 -->
-      <!-- <p v-if="helpTextKey" class="mt-1 text-xs" :class="[isRTL ? 'text-right' : 'text-left', 'text-gray-500']">
-        {{ $t(`booking.help.${helpTextKey}`) }}
-      </p> -->
     </div>
   </template>
   
@@ -69,9 +64,6 @@
   })
   
   const { locale } = useI18n()
-  
-  // 判断是否是RTL语言（如阿拉伯语，未来扩展用）
-//   const isRTL = computed(() => false) // 当前项目没有RTL语言
   
   const labelClass = 'text-gray-700'
   </script>
