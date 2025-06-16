@@ -1,0 +1,18 @@
+{
+    "hello": "你好世界",
+    "news": "新闻",
+    "sns": "社交媒体",
+    "nav": {
+      "home": "首页",
+      "inbound": "入境旅游",
+      "outbound": "出境旅游",
+      "about": "关于我们"
+    },
+    "timeDeff": {
+      "title": "时差提示——中国 (UTC+8)  俄罗斯 (UTC+3)  日本 (UTC+9)",
+      "chinaNow": "北京时间（BEIJING）TIME："
+    },
+    "footer": {
+      "copyright": "@ 2025 Dalian Wenyuan International Travel Agency Co., Ltd. "
+    }
+  }
