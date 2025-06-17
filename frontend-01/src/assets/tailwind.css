@@ -3,9 +3,13 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'AbrilFatface';
-    src: url('/fonts/AbrilFatface-Regular-2.ttf') format('truetype');
+    font-family: 'Abril';
+    src: url('/fonts/AbrilFatface-Regular-2.woff2') format('truetype');
 
-    font-family: 'SourceHanSan';
-    src: url('/fonts/SourceHanSansSC-Normal-2.otf') format('truetype');
+    font-family: 'Source';
+    src: url('/fonts/SourceHanSansSC-Normal-2.woff2') format('truetype');
+
+    font-family: 'Inter9';
+    src: url('/fonts/Inter-Regular-9.woff2') format('truetype');
+    
   }

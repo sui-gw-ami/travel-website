@@ -1,9 +1,9 @@
 <template>
   <div class="bg-white border-t py-6">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-6 space-y-4 md:space-y-0">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-end px-6 space-y-4 md:space-y-0">
       
       <!-- 左侧链接 -->
-      <div class="text-sm text-blue-700 flex space-x-4">
+      <div class="text-md text-Languages-textblue flex space-x-2 font-Source font-bold">
         <a href="#" class="hover:underline">关于我们</a>
         <span>|</span>
         <a href="#" class="hover:underline">常见问题</a>
@@ -33,63 +33,14 @@
 
 
       <!-- 右侧语言下拉 -->
-      <div class="relative inline-block">
-        <button
-          @click="toggleDropdown"
-          class="w-50 flex items-center border border-blue-700 text-Languages-textblue font-bold px-3 py-1 rounded-full text-sm hover:bg-blue-300"
-        >
-           {{ currentLanguage.label }}
-          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-
-        <div v-if="dropdownOpen" class="absolute right-0 mt-2 w-36 bg-white border border-blue-700 rounded-md shadow-md z-10">
-          <div
-            v-for="lang in languages"
-            :key="lang.code"
-            @click="selectLanguage(lang)"
-            :class="[
-              'px-4 py-1 flex items-center cursor-pointer',
-              currentLanguage.code === lang.code
-                ? 'bg-Languages-deepblue'
-                : 'hover:bg-Languages-lightblue'
-            ]"
-
-          >
-            <span>{{ lang.label }}</span>
-          </div>
-        </div>
-      </div>
+      <LanguageDropdown  />
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-
-const dropdownOpen = ref(false)
-
-const toggleDropdown = () => {
-  dropdownOpen.value = !dropdownOpen.value
-}
-
-const currentLanguage = ref({
-  code: 'zh',
-  label: '🌐LANGUAGE',
-})
-
-const selectLanguage = (lang) => {
-  currentLanguage.value = lang
-  dropdownOpen.value = false
-  // TODO: 这里可以加上切换语言的逻辑，例如调用 i18n
-}
-
-const languages = [
-  { code: 'zh', label: '中文'},
-  { code: 'ja', label: '日本語',},
-  { code: 'ru', label: 'Русский'},
-]
+import LanguageDropdown from './LanguageDropdown.vue'
 
 const socialIcons = [
   {

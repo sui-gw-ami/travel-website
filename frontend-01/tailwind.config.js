@@ -26,8 +26,9 @@ export default {
         }
       },
       fontFamily: {
-        Abril: ['"AbrilFatface"', 'sans-serif'],
-        Source: ['"SourceHanSan"', 'sans-serif'],
+        Abril: ['"Abril"', 'sans-serif'],
+        Source: ['"Source"', 'sans-serif'],
+        Inter9: ['"Inter9"', 'sans-serif'],
       },
     },
   },

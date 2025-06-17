@@ -14,7 +14,7 @@
   
       <div
         v-if="isOpen"
-        class="z-50 absolute mt-2 bg-white divide-y divide-gray-100 rounded-lg shadow w-44"
+        class="absolute w-full border border-blue-700 border-t-0 rounded-b-lg overflow-hidden z-10"
       >
         <ul class="py-2 text-sm text-gray-700">
           <li v-for="language in languages" :key="language.code">
