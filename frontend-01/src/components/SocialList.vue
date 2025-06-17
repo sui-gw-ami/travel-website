@@ -52,7 +52,7 @@
             :class="[
               'px-4 py-1 flex items-center cursor-pointer',
               currentLanguage.code === lang.code
-                ? 'hover:bg-Languages-deepblue'
+                ? 'bg-Languages-deepblue'
                 : 'hover:bg-Languages-lightblue'
             ]"
 
