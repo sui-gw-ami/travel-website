@@ -1,7 +1,17 @@
 <template>
-    <footer class="bg-yellow-500/95 text-gray-600 py-8">
+    <footer class="bg-footer text-gray-500 py-8">
         <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
-            <img src="/image/logo/footer-logo.png" alt="Logo" class="h-40 px-12" />
+            <img src="/image/logo/footer-logo.png" alt="Logo" class="h-52 px-12" />
+            <div>
+                <div class="flex items-center justify-start">
+                  <img src="/image/sns/footer-weChat.png" alt="Logo" class="h-28 px-2" />
+                  <img src="/image/sns/footer-line.png" alt="Logo" class="h-28 px-4" />
+                </div>
+                <div class="text-right font-Source font-bold">
+                  <p> Email: ONO@tripmaker.cc</p>
+                </div>
+                
+            </div>
         </div>
 
       <div class="container mx-auto px-3 text-center">

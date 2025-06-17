@@ -3,6 +3,7 @@ import Navbar from './components/Navbar.vue'
 import HeroVideo from './components/HeroVideo.vue'
 import NewsSection from './components/NewsSection.vue'
 import SocialMediaSection from './components/SocialMediaSection.vue'
+import SocialList from './components/SocialList.vue'
 import Footer from './components/Footer.vue'
 </script>
 
@@ -12,6 +13,7 @@ import Footer from './components/Footer.vue'
     <HeroVideo />
     <NewsSection />
     <SocialMediaSection />
+    <SocialList />
     <Footer />
   </div>
 </template>

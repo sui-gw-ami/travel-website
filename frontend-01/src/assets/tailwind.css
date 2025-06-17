@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'AbrilFatface';
+    src: url('/fonts/AbrilFatface-Regular-2.ttf') format('truetype');
+
+    font-family: 'SourceHanSan';
+    src: url('/fonts/SourceHanSansSC-Normal-2.otf') format('truetype');
+  }
