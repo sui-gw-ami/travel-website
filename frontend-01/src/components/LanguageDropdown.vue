@@ -17,7 +17,7 @@
             </svg>
         </button>
 
-        <div v-if="dropdownOpen" class="absolute right-0  w-40 bg-white border border-blue-700 rounded-md shadow-md z-10">
+        <div v-if="dropdownOpen" class="absolute right-0  w-40 bg-white border border-blue-700 rounded-xl shadow-md z-10">
             <div
             v-for="lang in languages"
             :key="lang.code"
@@ -25,8 +25,8 @@
             :class="[
                 'px-4 py-1 flex items-center cursor-pointer',
                 currentLanguage.code === lang.code
-                ? 'bg-Languages-deepblue text-Languages-textwhite'
-                : 'hover:bg-Languages-lightblue text-Languages-textblue'
+                ? 'bg-Languages-deepblue text-Languages-textwhite rounded-xl'
+                : 'hover:bg-Languages-lightblue text-Languages-textblue rounded-xl'
             ]"
 
             >

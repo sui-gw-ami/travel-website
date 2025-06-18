@@ -3,13 +3,28 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'Abril';
-    src: url('/fonts/AbrilFatface-Regular-2.woff2') format('truetype');
+  font-family: 'Abril'; 
+  src: url('/fonts/AbrilFatface-Regular-webfont.woff') format('woff');
+  font-display: swap;
+}
 
-    font-family: 'Source';
-    src: url('/fonts/SourceHanSansSC-Normal-2.woff2') format('truetype');
+@font-face {
+  font-family: 'SourceHanSans'; 
+  font-display: swap;
+  src: url('/fonts/SourceHanSansSC-VF.otf.woff2') format('woff2');
+}
 
-    font-family: 'Inter9';
-    src: url('/fonts/Inter-Regular-9.woff2') format('truetype');
-    
-  }
+@font-face {
+  font-family: InterVariable;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/InterVariable.woff2") format("woff2");
+}
+@font-face {
+  font-family: InterVariable;
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/InterVariable-Italic.woff2") format("woff2");
+}

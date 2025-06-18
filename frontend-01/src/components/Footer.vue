@@ -15,7 +15,7 @@
         </div>
 
       <div class="container mx-auto px-3 text-center font-Inter9">
-        <p> 2025 DALIAN WENYUAN INTERNATIONAL TRAVEL AGENCY CO., LTD.</p>
+        <p> {{ new Date().getFullYear() }} DALIAN WENYUAN INTERNATIONAL TRAVEL AGENCY CO., LTD.</p>
       </div>
     </footer>
   </template>

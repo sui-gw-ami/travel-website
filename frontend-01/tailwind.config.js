@@ -26,10 +26,10 @@ export default {
         }
       },
       fontFamily: {
-        Abril: ['"Abril"', 'sans-serif'],
-        Source: ['"Source"', 'sans-serif'],
-        Inter9: ['"Inter9"', 'sans-serif'],
-      },
+        abril: ['"Abril"', 'serif'], 
+        source: ['"SourceHanSans"', 'sans-serif'], 
+        inter: ['"InterVariable"', 'monospace'] 
+      }
     },
   },
   plugins: [
