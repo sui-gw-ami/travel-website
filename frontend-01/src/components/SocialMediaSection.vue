@@ -36,17 +36,17 @@
           <h3 class="font-abril text-3xl tracking-wider mb-4 text-Languages-textblue">INSTAGRAM</h3>
           <h3 class="font-inter text-md tracking-widest mb-2 px-4 text-Languages-textblue">@Xiaozhupeini</h3>
         </div>
-        <div class="flex space-x-8 overflow-x-auto pb-2">
+        <div class="flex h-96 space-x-2 overflow-x-auto pb-2">
           <!-- 视频项（预留3个） -->
           <div
             v-for="id in embedIds"
             :key="id"
-            class="flex w-96 h-56 bg-gray-200 rounded-xl items-center justify-center"
+            class="block h-[500px] bg-gray-200 items-start"
           >
             <iframe
               :src="`https://www.instagram.com/p/${id}/embed`"
               width="100%"
-              height="480"
+              height="450"
               frameborder="0"
               scrolling="no"
               allowtransparency="true"
