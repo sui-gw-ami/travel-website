@@ -39,10 +39,20 @@
         <div class="flex space-x-8 overflow-x-auto pb-2">
           <!-- 视频项（预留3个） -->
           <div
-            v-for="n in 3"
-            :key="'ins-' + n"
+            v-for="id in embedIds"
+            :key="id"
             class="flex w-96 h-56 bg-gray-200 rounded-xl items-center justify-center"
           >
+            <iframe
+              :src="`https://www.instagram.com/p/${id}/embed`"
+              width="100%"
+              height="480"
+              frameborder="0"
+              scrolling="no"
+              allowtransparency="true"
+              allow="encrypted-media"
+              class="rounded-md"
+            ></iframe>
           </div>
         </div>
       </div>
@@ -55,8 +65,16 @@ import { ref, onMounted } from 'vue'
 
 const videos = ref([])
 
+// youtubeID
 const API_KEY = 'AIzaSyA5Z0D-TorjiNf2ht8yJrPxcdWmVIMkW6g' 
 const CHANNEL_ID = 'UCqMg-BJ0Zs93kg3pDmqZZ0g'
+
+// INS视频ID
+const embedIds = [
+  'DK4nlJ8TNft',
+  'BEVf9_rP_6q',
+  'DH3PpUItTZH'
+]
 
 onMounted(async () => {
   try {
