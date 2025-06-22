@@ -1,17 +1,20 @@
 <script setup>
-import Navbar from './components/Navbar.vue'
 import HeroVideo from './components/HeroVideo.vue'
-import NewsSection from './components/NewsSection.vue'
+import InboundNews from './components/InboundNews.vue'
+import OutboundNews from './components/OutboundNews.vue'
 import SocialMediaSection from './components/SocialMediaSection.vue'
 import SocialList from './components/SocialList.vue'
 import Footer from './components/Footer.vue'
+import Timezone from './components/Timezone.vue'
 </script>
 
 <template>
   <div>
-    <Navbar />
+    <!-- <Navbar /> -->
     <HeroVideo />
-    <NewsSection />
+    <Timezone />
+    <InboundNews />
+    <OutboundNews />
     <SocialMediaSection />
     <SocialList />
     <Footer />
