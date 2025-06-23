@@ -12,7 +12,7 @@
     <!-- 时间文字区域 -->
     <div class="max-w-7xl mx-auto px-2 py-2 flex justify-between items-center font-source">
       <!-- 左侧：日本时间，避免与图片重叠 -->
-      <p class="pl-36">时差提示———中国（UTC+8） 俄罗斯（UTC+3） 日本（UTC+9） </p>
+      <p class="pl-48">时差提示———中国（UTC+8） 俄罗斯（UTC+3） 日本（UTC+9） </p>
       <!-- 右侧：北京时间 -->
       <p>北京时间（BEIJING）TIME: {{ beijingTime }}</p>
     </div>
