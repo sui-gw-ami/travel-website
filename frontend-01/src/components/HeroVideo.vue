@@ -1,6 +1,6 @@
 <template>
-    <div class="relative h-[540px] overflow-hidden">
-      <video autoplay muted loop class="absolute w-full h-[540px] object-cover">
+    <div class="relative h-[600px] overflow-hidden">
+      <video autoplay muted loop class="absolute w-full h-[600px] object-cover">
         <source src="/videos/hero.mp4" type="video/mp4" />
       </video>
        <!-- ✅ 导航栏放在视频上方，不固定 -->
@@ -16,7 +16,7 @@
     </nav>
 
       <!-- 图层区域 -->
-      <div class="relative px-72 top-80 overflow-visible flex items-center">
+      <div class="relative px-72 top-96 overflow-visible flex items-center">
         <!-- 👇 一个容器包裹所有：peer 和被控制对象 -->
         <div class="relative group">
           <!-- peer 元素：LetsGo.png -->
