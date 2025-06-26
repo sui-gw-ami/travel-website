@@ -1,4 +1,5 @@
 <script setup>
+import { useRoute } from 'vue-router'
 import HeroVideo from './components/HeroVideo.vue'
 import InboundNews from './components/InboundNews.vue'
 import OutboundNews from './components/OutboundNews.vue'
@@ -6,16 +7,20 @@ import SocialMediaSection from './components/SocialMediaSection.vue'
 import SocialList from './components/SocialList.vue'
 import Footer from './components/Footer.vue'
 import Timezone from './components/Timezone.vue'
+const route = useRoute()
 </script>
 
 <template>
   <div>
     <!-- <Navbar /> -->
-    <HeroVideo />
-    <Timezone />
-    <InboundNews />
-    <OutboundNews />
-    <SocialMediaSection />
+     <router-view />
+      <template v-if="route.name !== 'NewsDetails'">
+        <HeroVideo />
+        <Timezone />
+        <InboundNews />
+        <OutboundNews />
+        <SocialMediaSection />
+    </template>
     <SocialList />
     <Footer />
   </div>

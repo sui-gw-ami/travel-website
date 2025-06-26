@@ -48,6 +48,7 @@ const domesticNews = ref([
 ])
 
 function goToDetail(id) {
-  router.push(`/news/${id}`)
+  // router.push(`/news/${id}`)
+   router.push({ name: 'NewsDetails', params: { id } });
 }
 </script>

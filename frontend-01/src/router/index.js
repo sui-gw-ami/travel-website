@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-// import Home from '@/views/Home.vue'
+import NewsDetails from '@/components/NewsDetails.vue'
 // import Inbound from '@/views/Inbound.vue'
 // import Outbound from '@/views/Outbound.vue'
 // import News from '@/views/News.vue'
@@ -10,7 +10,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 export default createRouter({
   history: createWebHistory(),
   routes: [
-    // { path: '/', name: 'Home', component: Home },
+    { path: '/news/:id', name: 'NewsDetails', component: NewsDetails, props: true},
     // { path: '/inbound', name: 'Inbound', component: Inbound },
     // { path: '/outbound', name: 'Outbound', component: Outbound },
     // { path: '/news', name: 'News', component: News },

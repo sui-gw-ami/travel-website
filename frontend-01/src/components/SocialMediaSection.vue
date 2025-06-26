@@ -67,7 +67,7 @@ const videos = ref([])
 
 // youtubeID
 const API_KEY = 'AIzaSyA5Z0D-TorjiNf2ht8yJrPxcdWmVIMkW6g' 
-const CHANNEL_ID = 'UCqMg-BJ0Zs93kg3pDmqZZ0g'
+	const CHANNEL_ID = 'UCB4-upPFs5L-pzo5N5NkJWw'
 
 // INS视频ID
 const embedIds = [
