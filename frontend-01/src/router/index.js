@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import NewsDetails from '@/components/NewsDetails.vue'
-// import Inbound from '@/views/Inbound.vue'
+import CompanyInfo from '@/components/CompanyInfo.vue'
 // import Outbound from '@/views/Outbound.vue'
 // import News from '@/views/News.vue'
 // import Services from '@/views/Services.vue'
@@ -11,7 +11,7 @@ export default createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/news/:id', name: 'NewsDetails', component: NewsDetails, props: true},
-    // { path: '/inbound', name: 'Inbound', component: Inbound },
+    { path: '/aboutUs', name: 'CompanyInfo', component: CompanyInfo },
     // { path: '/outbound', name: 'Outbound', component: Outbound },
     // { path: '/news', name: 'News', component: News },
     // { path: '/services', name: 'Services', component: Services },
@@ -19,5 +19,15 @@ export default createRouter({
     // { path: '/inbound/:id', name: 'InboundTourDetail', component: Inbound, props: true},
     // { path: '/outbound/:id', name: 'OutboundTourDetail', component: Outbound, props: true},
     // { path: '/booking/:id', name: 'Booking', component: Booking, props: true},
-  ]
+  ],
+
+  scrollBehavior(to, from, savedPosition) {
+    // 如果浏览器有记录（前进/后退），返回记录的位置
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      // 否则回到页面顶部
+      return { top: 0 }
+    }
+  }
 })

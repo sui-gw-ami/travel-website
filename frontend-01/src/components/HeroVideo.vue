@@ -37,7 +37,7 @@
 
           <!-- footer-weChat.png（悬停时浮出） -->
           <img
-            src="/image/sns/footer-weChat.png"
+            src="/image/sns/scan-line.png"
             alt="WeChat QR"
             class="absolute left-0 top-[-145px] w-[166px] object-cover 
                   opacity-0 transform translate-y-10 

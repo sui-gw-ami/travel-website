@@ -4,7 +4,7 @@
     <section class="max-w-4xl mx-auto p-6">
       <div class="flex items-center justify-start">
         <h2 class="text-2xl font-inter text-Languages-textblue mb-4">NEWS</h2>
-        <p class="font-source mb-3 px-4">/热点新闻</p>
+        <p class="font-source mb-3 px-4">{{ $t('inbound.hotNews') }}</p>
       </div>
 
       <div class="h-0.5 bg-gray-400 mb-2"></div>
@@ -33,22 +33,27 @@
 
 
 <script setup>
-import { ref } from 'vue'
+import { ref ,onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import axios from 'axios'
 
 const router = useRouter()
+const domesticNews = ref([])
 
-const domesticNews = ref([
-  { id: 1, time:20250623, title: '国内新闻一' },
-  { id: 2, time:20250623, title: '国内新闻二' },
-  { id: 3, time:20250623, title: '国内新闻三' },
-  { id: 4, time:20250623, title: '国内新闻三' },
-  { id: 5, time:20250623, title: '国内新闻三' },
-    { id: 6, time:20250623, title: '国内新闻三' },
-])
+async function fetchNews() {
+  try {
+    const { data } = await axios.get('/api/news/insideNews') // ✅ 请求后端接口
+    domesticNews.value = data
+  } catch (error) {
+    console.error('获取新闻失败:', error)
+  }
+}
 
 function goToDetail(id) {
-  // router.push(`/news/${id}`)
    router.push({ name: 'NewsDetails', params: { id } });
 }
+
+onMounted(() => {
+  fetchNews()
+})
 </script>

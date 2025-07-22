@@ -9,5 +9,14 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, 'src')
     }
+  },
+
+  server: {
+  proxy: {
+    '/api': {
+      target: 'http://localhost:8080', // 你的 Spring Boot 后端
+      changeOrigin: true
+    }
   }
+}
 })

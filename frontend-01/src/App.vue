@@ -14,7 +14,7 @@ const route = useRoute()
   <div>
     <!-- <Navbar /> -->
      <router-view />
-      <template v-if="route.name !== 'NewsDetails'">
+      <template v-if="route.name !== 'NewsDetails' && route.name !== 'CompanyInfo'">
         <HeroVideo />
         <Timezone />
         <InboundNews />

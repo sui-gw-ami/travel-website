@@ -1,7 +1,7 @@
 {
-    "hello": "你好世界",
-    "news": "新闻",
-    "sns": "社交媒体",
+    "inbound": {
+      "hotNews": "/人気ニュース"
+    },
     "nav": {
       "home": "首页",
       "inbound": "入境旅游",

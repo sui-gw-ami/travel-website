@@ -47,6 +47,7 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { useLanguageStore } from '@/stores/language'
+import i18n from '@/i18n/i18n'   // 引入 i18n 实例
 
 const langStore = useLanguageStore()
 const dropdownOpen = ref(false)
@@ -63,6 +64,7 @@ function toggleDropdown() {
 
 function selectLanguage(lang) {
   langStore.setLanguage(lang)
+  i18n.global.locale.value = lang.code   // 切换 i18n 的语言
   dropdownOpen.value = false
 }
 
@@ -80,3 +82,4 @@ onBeforeUnmount(() => {
   document.removeEventListener('click', handleClickOutside)
 })
 </script>
+

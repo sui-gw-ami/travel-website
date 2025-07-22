@@ -24,7 +24,7 @@
           @click="goToDetail(item.id)"
         >
           <img
-            :src="item.imageUrl"
+            :src="`http://localhost:8080/${item.showImage}`"
             :alt="item.title"
             class="w-[600px] h-[400px] object-cover rounded-lg"
           />
@@ -45,22 +45,38 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref ,onMounted,computed  } from 'vue'
 import { useRouter } from 'vue-router'
+import axios from 'axios'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 
 const router = useRouter()
+const internationalNews = ref([])
 
-const internationalNews = ref([
-  { id: 101, title: '国外新闻一', imageUrl: '/image/news/new1.png' },
-  { id: 102, title: '国外新闻二', imageUrl: '/image/news/new2.png' },
-  { id: 103, title: '国外新闻三', imageUrl: '/image/news/new3.png' },
-])
+async function fetchNews() {
+  try {
+    const { data } = await axios.get('/api/news/outsideNews') // ✅ 请求后端接口
+    internationalNews.value = data
+  } catch (error) {
+    console.error(t('error.failedToGetNew'), error)
+  }
+}
+
+function goToDetail(id) {
+   router.push({ name: 'NewsDetails', params: { id } });
+}
+
+onMounted(() => {
+  fetchNews()
+})
 
 const currentIndex = ref(0)
 
 const visibleItems = computed(() => {
   const list = internationalNews.value
   const len = list.length
+    if (len === 0) return []
 
   return [
     list[(currentIndex.value + len - 1) % len], // 左边
@@ -77,9 +93,5 @@ function prev() {
 function next() {
   const len = internationalNews.value.length
   currentIndex.value = (currentIndex.value + 1) % len
-}
-
-function goToDetail(id) {
-  router.push(`/news/${id}`)
 }
 </script>

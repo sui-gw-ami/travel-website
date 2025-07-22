@@ -4,7 +4,7 @@
       
       <!-- 左侧链接 -->
       <div class="text-md text-Languages-textblue flex space-x-2 font-source">
-        <a href="#" class="hover:underline">关于我们</a>
+        <router-link to="/aboutUs" class="hover:underline">{{ $t('footer.aboutUs') }}</router-link>
       </div>
 
       <!-- 中间社交图标 -->
@@ -40,8 +40,10 @@
 </template>
 
 <script setup>
-import { ref,computed, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import LanguageDropdown from './LanguageDropdown.vue'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 
 const links = ref({})
 const loading = ref(true)
@@ -83,11 +85,11 @@ const socialIcons = [
 onMounted(async () => {
   try {
     const response = await fetch('/data/socialLinks.json')
-    if (!response.ok) throw new Error('网络响应不正常')
+    if (!response.ok) throw new Error(t('error.networkError'))
     links.value = await response.json()
   } catch (err) {
     error.value = err
-    console.error('加载社交链接失败:', err)
+    console.error(t('error.uploadSnsError'), err)
   } finally {
     loading.value = false
   }

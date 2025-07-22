@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-yellow-300 relative overflow-visible">
+  <div class="bg-yellow-400 relative overflow-visible">
     <!-- 图片层 -->
     <div class="max-w-6xl mx-auto px-4 py-2 relative">
       <img

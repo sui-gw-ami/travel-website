@@ -1,18 +1,28 @@
 {
-    "hello": "你好世界",
-    "news": "新闻",
-    "sns": "社交媒体",
-    "nav": {
-      "home": "首页",
-      "inbound": "入境旅游",
-      "outbound": "出境旅游",
-      "about": "关于我们"
+    "inbound": {
+      "hotNews": "/热点新闻"
+    },
+    "newsDetal": {
+      "from": "来源：",
+      "releaseAddress": "发布于：",
+      "hotNews": "热门新闻"
+    },
+    "error": {
+      "newNotExist": "新闻不存在 ",
+      "failedToGetNew": "获取新闻失败 ",
+      "failedToGetHotNew": "获取热门新闻失败 ",
+      "networkError": "网络响应不正常 ",
+      "uploadSnsError": "加载社交链接失败 ",
+      "failedToGetYoutube": "获取 YouTube 视频失败 ",
+      "failedToGetTikTok": "获取 TikTok 视频失败 "
+
+    },
+    "footer": {
+      "aboutUs": "关于我们"
     },
     "timeDeff": {
       "title": "时差提示——中国 (UTC+8)  俄罗斯 (UTC+3)  日本 (UTC+9)",
       "chinaNow": "北京时间（BEIJING）TIME："
-    },
-    "footer": {
-      "copyright": "@ 2025 Dalian Wenyuan International Travel Agency Co., Ltd. "
     }
+
   }
