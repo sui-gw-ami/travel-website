@@ -1,6 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import NewsDetails from '@/components/NewsDetails.vue'
 import CompanyInfo from '@/components/CompanyInfo.vue'
+
+import Terms from '@/views/Terms.vue'
+import Privacy from '@/views/Privacy.vue'
+
+import LoginPage from '@/admin/LoginPage.vue'
 // import Outbound from '@/views/Outbound.vue'
 // import News from '@/views/News.vue'
 // import Services from '@/views/Services.vue'
@@ -12,6 +17,11 @@ export default createRouter({
   routes: [
     { path: '/news/:id', name: 'NewsDetails', component: NewsDetails, props: true},
     { path: '/aboutUs', name: 'CompanyInfo', component: CompanyInfo },
+
+    { path: '/terms', name: 'Terms',component: Terms },
+    { path: '/privacy',name: 'Privacy', component: Privacy },
+
+    { path: '/manage/login',name: 'LoginPage', component: LoginPage },
     // { path: '/outbound', name: 'Outbound', component: Outbound },
     // { path: '/news', name: 'News', component: News },
     // { path: '/services', name: 'Services', component: Services },

@@ -1,15 +1,27 @@
+
 {
-    "inbound": {
-      "hotNews": "/人気ニュース"
-    },
-    "nav": {
-      "home": "首页",
-      "inbound": "入境旅游",
-      "outbound": "出境旅游",
-      "about": "关于我们"
-    },
-    "hero": {
-      "title": "开启您的奇妙旅行",
-      "subtitle": "探索中国与世界的美丽"
-    }
-  }
+"inbound": {
+"hotNews": "/ 人気ニュース"
+},
+"newsDetal": {
+"from": "出典：",
+"releaseAddress": "配信先：",
+"hotNews": "人気ニュース"
+},
+"error": {
+"newNotExist": "ニュースが存在しません",
+"failedToGetNew": "ニュースの取得に失敗しました",
+"failedToGetHotNew": "人気ニュースの取得に失敗しました",
+"networkError": "ネットワーク応答が異常です",
+"uploadSnsError": "SNS リンクの読み込みに失敗しました",
+"failedToGetYoutube": "YouTube 動画の取得に失敗しました",
+"failedToGetTikTok": "TikTok 動画の取得に失敗しました"
+},
+"footer": {
+"aboutUs": "当社について"
+},
+"timeDeff": {
+"title": "時差情報 —— 中国 (UTC+8) ロシア (UTC+3) 日本 (UTC+9)",
+"chinaNow": "北京時間（BEIJING）TIME："
+}
+}

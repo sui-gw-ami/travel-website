@@ -1,4 +1,5 @@
 <script setup>
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import HeroVideo from './components/HeroVideo.vue'
 import InboundNews from './components/InboundNews.vue'
@@ -7,37 +8,31 @@ import SocialMediaSection from './components/SocialMediaSection.vue'
 import SocialList from './components/SocialList.vue'
 import Footer from './components/Footer.vue'
 import Timezone from './components/Timezone.vue'
+
 const route = useRoute()
+
+// 不显示主页模块的页面名称
+const excludedRoutes = ['NewsDetails', 'CompanyInfo', 'Terms', 'Privacy']
+
+// 当前是否需要隐藏主页模块
+const shouldHideMainContent = computed(() => {
+  return (route.name && excludedRoutes.includes(route.name)) || route.path.startsWith('/manage')
+})
 </script>
 
 <template>
   <div>
-    <!-- <Navbar /> -->
-     <router-view />
-      <template v-if="route.name !== 'NewsDetails' && route.name !== 'CompanyInfo'">
-        <HeroVideo />
-        <Timezone />
-        <InboundNews />
-        <OutboundNews />
-        <SocialMediaSection />
+    <router-view />
+
+    <template v-if="!shouldHideMainContent">
+      <HeroVideo />
+      <Timezone />
+      <InboundNews />
+      <OutboundNews />
+      <SocialMediaSection />
     </template>
+
     <SocialList />
     <Footer />
   </div>
 </template>
-
-
-<style scoped>
-/* .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-} */
-</style>

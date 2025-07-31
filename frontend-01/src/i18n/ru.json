@@ -1,18 +1,26 @@
 {
-    "hello": "你好世界",
-    "news": "新闻",
-    "sns": "社交媒体",
-    "nav": {
-      "home": "首页",
-      "inbound": "入境旅游",
-      "outbound": "出境旅游",
-      "about": "关于我们"
-    },
-    "hero": {
-      "title": "开启您的奇妙旅行",
-      "subtitle": "探索中国与世界的美丽"
-    },
-    "footer": {
-      "copyright": "版权所有 © 2025 旅游公司"
-    }
-  }
+"inbound": {
+"hotNews": "/популярные новости"
+},
+"newsDetal": {
+"from": "Источник：",
+"releaseAddress": "Опубликовано на：",
+"hotNews": "популярные новости"
+},
+"error": {
+"newNotExist": "Новость не существует ",
+"failedToGetNew": "Не удалось получить новость ",
+"failedToGetHotNew": "Не удалось получить популярные новости ",
+"networkError": "Сетевая реакция не нормальная ",
+"uploadSnsError": "Не удалось загрузить ссылку в социальные сети ",
+"failedToGetYoutube": "Не удалось получить видео YouTube ",
+"failedToGetTikTok": "Не удалось получить видео TikTok "
+},
+"footer": {
+"aboutUs": "О нас"
+},
+"timeDeff": {
+"title": "Информация о разнице во времени — Китай (UTC+8) Россия (UTC+3) Япония (UTC+9)",
+"chinaNow": "Время Пекина（ПЕКИН）TIME："
+}
+}
