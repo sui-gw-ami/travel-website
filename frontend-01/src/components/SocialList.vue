@@ -55,6 +55,7 @@ const socialIcons = [
   { key: 'x', default: '/image/sns/social/x.png', hover: '/image/sns/social/x-hover.png' },
   { key: 'youtube', default: '/image/sns/social/youtube.png', hover: '/image/sns/social/youtube-hover.png' },
   { key: 'ins', default: '/image/sns/social/ins.png', hover: '/image/sns/social/ins-hover.png' },
+  { key: 'vk', default: '/image/sns/social/vk.png', hover: '/image/sns/social/vk-hover.png' },
 ]
 
 onMounted(async () => {

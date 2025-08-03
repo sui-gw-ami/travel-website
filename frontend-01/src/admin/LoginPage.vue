@@ -57,7 +57,7 @@ const onLogin = async () => {
   try {
     const res = await axios.post('/api/auth/login', form.value)
     localStorage.setItem('jwtToken', res.data.token)
-    router.push('/manage/news')
+    router.push('/manage/newsList')
   } catch (err) {
     error.value = '用户名或密码错误'
   } finally {

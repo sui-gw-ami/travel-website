@@ -6,11 +6,8 @@ import Terms from '@/views/Terms.vue'
 import Privacy from '@/views/Privacy.vue'
 
 import LoginPage from '@/admin/LoginPage.vue'
-// import Outbound from '@/views/Outbound.vue'
-// import News from '@/views/News.vue'
-// import Services from '@/views/Services.vue'
-// import Contact from '@/views/Contact.vue'
-// import Booking from '@/views/Booking.vue'
+import NewsEdit from '@/admin/NewsEdit.vue'
+import NewsList from '@/admin/NewsList.vue'
 
 export default createRouter({
   history: createWebHistory(),
@@ -22,13 +19,9 @@ export default createRouter({
     { path: '/privacy',name: 'Privacy', component: Privacy },
 
     { path: '/manage/login',name: 'LoginPage', component: LoginPage },
-    // { path: '/outbound', name: 'Outbound', component: Outbound },
-    // { path: '/news', name: 'News', component: News },
-    // { path: '/services', name: 'Services', component: Services },
-    // { path: '/contact', name: 'Contact', component: Contact },
-    // { path: '/inbound/:id', name: 'InboundTourDetail', component: Inbound, props: true},
-    // { path: '/outbound/:id', name: 'OutboundTourDetail', component: Outbound, props: true},
-    // { path: '/booking/:id', name: 'Booking', component: Booking, props: true},
+    { path: '/manage/news/create',name: 'NewsEdit', component: NewsEdit },
+    { path: '/manage/news/edit/:id',name: 'NewsEdit', component: NewsEdit },
+    { path: '/manage/newsList',name: 'NewsList', component: NewsList },
   ],
 
   scrollBehavior(to, from, savedPosition) {
