@@ -19,7 +19,7 @@ export default createRouter({
     { path: '/privacy',name: 'Privacy', component: Privacy },
 
     { path: '/manage/login',name: 'LoginPage', component: LoginPage },
-    { path: '/manage/news/create',name: 'NewsEdit', component: NewsEdit },
+    { path: '/manage/news/create',name: 'NewsCreate', component: NewsEdit },
     { path: '/manage/news/edit/:id',name: 'NewsEdit', component: NewsEdit },
     { path: '/manage/newsList',name: 'NewsList', component: NewsList },
   ],

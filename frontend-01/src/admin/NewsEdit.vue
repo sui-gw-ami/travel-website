@@ -1,67 +1,127 @@
 <template>
-  <div class="p-6 max-w-3xl mx-auto">
+  <div class="p-4">
     <h2 class="text-2xl font-bold mb-4">{{ isEdit ? '编辑新闻' : '新增新闻' }}</h2>
 
-    <form @submit.prevent="submit">
-      <div class="mb-4">
-        <label class="block mb-1">标题</label>
-        <input v-model="news.title" class="w-full border px-3 py-2 rounded" required />
+    <!-- 基本信息 -->
+    <div class="mb-4">
+      <label>标题：</label>
+      <input v-model="news.title" class="border px-2 py-1 w-full" />
+    </div>
+
+    <div class="mb-4">
+      <label>类型：</label>
+      <input v-model="news.news_type" type="number" class="border px-2 py-1 w-full" />
+    </div>
+
+    <div class="mb-4">
+      <label>封面图：</label>
+      <input type="file" @change="uploadCover" />
+      <div v-if="news.show_image">
+        <img :src="news.show_image" class="w-40 mt-2" />
+      </div>
+    </div>
+
+    <!-- 内容编辑 -->
+    <div>
+      <h3 class="text-lg font-bold mb-2">新闻内容</h3>
+      <div v-for="(item, index) in contentList" :key="index" class="border p-2 mb-2">
+        <div v-if="item.content_type === 'text'">
+          <textarea v-model="item.content" rows="3" class="w-full border p-1"></textarea>
+        </div>
+        <div v-else>
+          <input type="file" @change="uploadImage($event, index)" />
+          <div v-if="item.content">
+            <img :src="item.content" class="w-40 mt-2" />
+          </div>
+        </div>
+        <button @click="removeContent(index)" class="bg-red-500 text-white px-2 py-1 mt-2 rounded">删除</button>
       </div>
 
-      <div class="mb-4">
-        <label class="block mb-1">内容</label>
-        <textarea v-model="news.content" rows="6" class="w-full border px-3 py-2 rounded" required />
+      <div class="space-x-2 mt-2">
+        <button @click="addText" class="bg-gray-500 text-white px-2 py-1 rounded">添加文字</button>
+        <button @click="addImage" class="bg-gray-500 text-white px-2 py-1 rounded">添加图片</button>
       </div>
+    </div>
 
-      <div class="mb-4">
-        <label class="block mb-1">类型</label>
-        <select v-model="news.category" class="w-full border px-3 py-2 rounded" required>
-          <option value="国内">国内</option>
-          <option value="国外">国外</option>
-        </select>
-      </div>
-
-      <div class="mb-4">
-        <label class="block mb-1">发布日期</label>
-        <input type="date" v-model="news.date" class="w-full border px-3 py-2 rounded" required />
-      </div>
-
-      <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-        提交
-      </button>
-    </form>
+    <!-- 保存 -->
+    <div class="mt-4">
+      <button @click="saveNews" class="bg-blue-500 text-white px-4 py-2 rounded">保存</button>
+    </div>
   </div>
 </template>
 
-<script setup>
-import { ref, onMounted } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+<script>
 import axios from 'axios'
+import { useRouter, useRoute } from 'vue-router'
 
-const route = useRoute()
-const router = useRouter()
-const isEdit = !!route.params.id
+export default {
+  name: 'NewsEdit',
+  setup() {
+    const router = useRouter()
+    const route = useRoute()
+    const isEdit = Vue.ref(false)
+    const newsId = Vue.ref(null)
 
-const news = ref({
-  title: '',
-  content: '',
-  category: '国内',
-  date: ''
-})
+    const news = Vue.reactive({
+      title: '',
+      news_type: '',
+      show_image: '',
+    })
 
-onMounted(async () => {
-  if (isEdit) {
-    const res = await axios.get(`/api/admin/news/${route.params.id}`)
-    news.value = res.data
+    const contentList = Vue.ref([])
+
+    const loadNews = async () => {
+      if (route.params.id) {
+        isEdit.value = true
+        newsId.value = route.params.id
+        const res = await axios.get(`/api/news/${newsId.value}`)
+        Object.assign(news, res.data.news)
+        contentList.value = res.data.contents
+      }
+    }
+
+    const addText = () => {
+      contentList.value.push({ content_type: 'text', content: '' })
+    }
+
+    const addImage = () => {
+      contentList.value.push({ content_type: 'image', content: '' })
+    }
+
+    const removeContent = (index) => {
+      contentList.value.splice(index, 1)
+    }
+
+    const uploadCover = async (event) => {
+      const formData = new FormData()
+      formData.append('file', event.target.files[0])
+      const res = await axios.post(`/api/news/uploadCover`, formData)
+      news.show_image = res.data.url
+    }
+
+    const uploadImage = async (event, index) => {
+      const formData = new FormData()
+      formData.append('file', event.target.files[0])
+      const res = await axios.post(`/api/news/${newsId.value}/uploadImage`, formData)
+      contentList.value[index].content = res.data.url
+    }
+
+    const saveNews = async () => {
+      let id = newsId.value
+      if (isEdit.value) {
+        await axios.put(`/api/news/${id}`, news)
+      } else {
+        const res = await axios.post(`/api/news`, news)
+        id = res.data.newsId
+        newsId.value = id
+      }
+      await axios.post(`/api/news/${id}/content`, contentList.value)
+      router.push('/manage/newsList')
+    }
+
+    Vue.onMounted(loadNews)
+
+    return { isEdit, news, contentList, addText, addImage, removeContent, uploadCover, uploadImage, saveNews }
   }
-})
-
-const submit = async () => {
-  if (isEdit) {
-    await axios.put(`/api/admin/news/${route.params.id}`, news.value)
-  } else {
-    await axios.post('/api/admin/news', news.value)
-  }
-  router.push('/manage/newsList')
 }
 </script>
